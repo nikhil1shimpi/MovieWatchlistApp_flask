@@ -1,0 +1,46 @@
+{% from "macros/svgs.html" import moon, sun %}
+{% macro header(email, theme) %}
+<header class="header">
+    <div class="nav-container">
+        <a href="{{ url_for('pages.index') }}" class="header__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" class="logo__icon" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                    <path d="M 54.525 30.855 c -5.759 0 -10.443 -4.685 -10.443 -10.444 S 48.767 9.968 54.525 9.968 S 64.97 14.653 64.97 20.412 S 60.284 30.855 54.525 30.855 z M 54.525 13.968 c -3.553 0 -6.443 2.891 -6.443 6.444 s 2.891 6.444 6.443 6.444 c 3.554 0 6.444 -2.891 6.444 -6.444 S 58.079 13.968 54.525 13.968 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <path d="M 25.089 32.797 c -3.764 0 -6.825 -3.062 -6.825 -6.825 s 3.062 -6.825 6.825 -6.825 s 6.825 3.062 6.825 6.825 S 28.853 32.797 25.089 32.797 z M 25.089 23.146 c -1.558 0 -2.825 1.268 -2.825 2.825 s 1.268 2.825 2.825 2.825 s 2.825 -1.268 2.825 -2.825 S 26.647 23.146 25.089 23.146 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <path d="M 41.585 56.856 H 17.389 c -1.104 0 -2 -0.896 -2 -2 v -6.861 c 0 -1.104 0.896 -2 2 -2 h 24.196 c 1.104 0 2 0.896 2 2 v 6.861 C 43.585 55.961 42.689 56.856 41.585 56.856 z M 19.389 52.856 h 20.196 v -2.861 H 19.389 V 52.856 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <path d="M 54.525 63.718 H 17.389 c -1.104 0 -2 -0.896 -2 -2 s 0.896 -2 2 -2 h 37.136 c 1.104 0 2 0.896 2 2 S 55.63 63.718 54.525 63.718 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <path d="M 88.984 41.313 c -0.626 -0.354 -1.396 -0.345 -2.015 0.026 l -10.06 6.047 V 37.91 c 0 -1.104 -0.896 -2 -2 -2 h -8.601 c 4.677 -3.565 7.715 -9.176 7.715 -15.498 c 0 -10.751 -8.747 -19.498 -19.498 -19.498 c -9.457 0 -17.356 6.769 -19.123 15.715 c -2.552 -2.814 -6.224 -4.595 -10.313 -4.595 c -7.686 0 -13.938 6.252 -13.938 13.938 c 0 3.889 1.605 7.407 4.183 9.938 H 8.637 c -1.104 0 -2 0.896 -2 2 v 8.085 H 2 c -1.104 0 -2 0.896 -2 2 v 13.723 c 0 1.104 0.896 2 2 2 h 4.637 v 8.085 c 0 1.104 0.896 2 2 2 H 36.63 l -12.892 11.81 c -0.814 0.746 -0.87 2.011 -0.124 2.825 c 0.395 0.431 0.934 0.649 1.475 0.649 c 0.482 0 0.967 -0.174 1.351 -0.525 l 15.333 -14.047 l 15.333 14.047 c 0.384 0.352 0.867 0.525 1.35 0.525 c 0.542 0 1.081 -0.219 1.476 -0.649 c 0.746 -0.814 0.69 -2.079 -0.124 -2.825 l -12.891 -11.81 H 74.91 c 1.104 0 2 -0.896 2 -2 v -9.477 l 10.06 6.047 c 0.316 0.19 0.673 0.286 1.03 0.286 c 0.339 0 0.679 -0.086 0.984 -0.259 C 89.612 68.044 90 67.379 90 66.658 V 43.054 C 90 42.333 89.612 41.668 88.984 41.313 z M 54.525 4.914 c 8.546 0 15.498 6.953 15.498 15.498 S 63.071 35.91 54.525 35.91 c -8.545 0 -15.498 -6.953 -15.498 -15.498 S 45.98 4.914 54.525 4.914 z M 42.742 35.91 h -7.897 c 1.428 -1.402 2.545 -3.11 3.268 -5.014 C 39.351 32.828 40.921 34.522 42.742 35.91 z M 15.151 25.972 c 0 -5.48 4.458 -9.938 9.938 -9.938 s 9.938 4.458 9.938 9.938 s -4.458 9.938 -9.938 9.938 S 15.151 31.452 15.151 25.972 z M 4 59.718 v -9.723 h 2.637 v 9.723 H 4 z M 72.91 69.803 H 10.637 v -8.085 V 47.995 V 39.91 H 72.91 v 11.013 v 7.867 V 69.803 z M 86 63.122 l -9.09 -5.463 v -5.605 L 86 46.59 V 63.122 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <path d="M 65.109 59.718 h -3.611 c -1.104 0 -2 0.896 -2 2 s 0.896 2 2 2 h 3.611 c 1.104 0 2 -0.896 2 -2 S 66.214 59.718 65.109 59.718 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                </g>
+                </svg>
+            <span class="logo__name">WatchList</span>
+        </a>
+        <nav class="nav">
+            {% if not email %}
+                <a href="{{ url_for('pages.login') }}" class="nav__link {{ 'nav__link--active' if request.path == url_for('pages.login') }}">
+                    <span class="nav__item">Log in</span>
+                </a>
+                <a href="{{ url_for('pages.register') }}" class="nav__link {{ 'nav__link--active' if request.path == url_for('pages.register') }}">
+                    <span class="nav__item">Register</span>
+                </a>
+            {% else %}
+                <a href="{{ url_for('pages.index') }}" class="nav__link {{ 'nav__link--active' if request.path == url_for('pages.index') }}">
+                    <span class="nav__item">Movies</span>
+                </a>
+                <a href="{{ url_for('pages.logout') }}" class="nav__link">
+                    <span class="nav__item">Log out</span>
+                </a>
+            {% endif %}
+            <a href="{{ url_for('pages.toggle_theme', current_page=request.path ) }}" class="nav__link">
+                <span class="nav__item">
+                    {% if theme == "dark" %}
+                        {{ sun("nav__icon") }}
+                    {% else %}
+                        {{ moon("nav__icon") }}
+                    {% endif %}
+                </span>
+            </a>
+        </nav>
+    </div>
+</header>
+{% endmacro %}
