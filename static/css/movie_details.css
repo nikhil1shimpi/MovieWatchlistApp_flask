@@ -106,6 +106,10 @@ border-radius: 4px;
 margin-bottom: 2.5rem;
 }
 
+.movie__casting {
+    margin-bottom: 2.5rem;
+    }
+
 .movie__meta {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -113,4 +117,11 @@ grid-template-columns: repeat(2, 1fr);
 
 .list__item {
 margin-top: 1rem;
+}
+
+.similar__link {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    color: unset;
 }

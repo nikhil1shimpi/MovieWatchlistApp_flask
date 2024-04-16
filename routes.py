@@ -6,6 +6,9 @@ from models import Movie, User
 import datetime
 from passlib.hash import pbkdf2_sha256
 import functools
+import pickle
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
 
 pages = Blueprint(
     "pages", __name__, template_folder="templates", static_folder="static"
@@ -101,6 +104,7 @@ def edit_movie(_id: str):
         movie.tags = form.tags.data
         movie.description = form.description.data
         movie.video_link = form.video_link.data
+        # overview, genre, keywords, cast, crew.
         current_app.db.movie.update_one({"_id": _id}, {"$set":asdict(movie)})
         return redirect(url_for(".movie", _id=movie._id))
     return render_template("movie_form.html", movie=movie, form=form)
@@ -110,6 +114,34 @@ def movie(_id: str):
     movie_data = current_app.db.movie.find_one({"_id": _id})
     movie = Movie(**movie_data)
     return render_template("movie_details.html", movie=movie)
+
+@pages.get("/movie/<string:_id>/similar_movies")
+@login_required
+def find_similar_movies(_id):
+    new = pd.read_csv("Movie Recomandation\\new_dataset.csv")
+    movie_data = current_app.db.movie.find_one({"_id": _id})
+    if movie_data["description"]:
+        movie_data_list = movie_data["description"] + movie_data["tags"] + movie_data["cast"]
+        movie_data_string = ' '.join([str(elem) for elem in movie_data_list])
+        # print(type(movie_data_string))
+        # print(movie_data_string)
+        vectors = pickle.load(open("Movie Recomandation\\vector_file", "rb"))
+        new_movie_vector = vectors.transform([movie_data_string])
+        # print(new_movie_vector.shape)
+        # print(new_movie_vector)
+        vectors = pickle.load(open("Movie Recomandation\\vector_file1", "rb"))
+        # print(vectors.shape)
+        similarity = cosine_similarity(new_movie_vector, vectors)
+        # print(type(similarity))
+        # print(similarity.shape)
+        data_series = pd.Series(similarity[0])
+        sorted_series_desc = data_series.sort_values(ascending=False)
+        similar_movies = list(new.iloc[sorted_series_desc.head(5).index]["title"])
+        # similar_movies = ["A", "B", "C", "D", "E"]
+        current_app.db.movie.update_one({"_id": _id}, {"$set":{"similar_movies":similar_movies}})
+    movie_data = current_app.db.movie.find_one({"_id": _id})
+    movie = Movie(**movie_data)
+    return redirect(url_for(".movie", _id=_id))
 
 @pages.get("/movie/<string:_id>/rate")
 @login_required
